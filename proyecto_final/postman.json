@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "af311bf6-166a-4695-9762-ed7724f23934",
+		"name": "Backend Ecomerce Coderhouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15070814"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.28:3000/api/products",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"28"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.28:3000/api/products/:pid",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"28"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						":pid"
+					],
+					"variable": [
+						{
+							"key": "pid",
+							"value": "exbmes85ylq"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Auto Gol Trend\",\r\n    \"description\": \"Blanco\",\r\n    \"code\": \"000AD9\",\r\n    \"price\": 1000000,\r\n    \"thumnails\":[]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.0.28:3000/api/products",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"28"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Silla Gamer XL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/products/:pid",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						":pid"
+					],
+					"variable": [
+						{
+							"key": "pid",
+							"value": "83ephb2tdjv"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.28:3000/api/products/:pid",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"28"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						":pid"
+					],
+					"variable": [
+						{
+							"key": "pid",
+							"value": "83ephb2tdjv"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.28:3000/api/carts",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"28"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.28:3000/api/carts/:cid",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"28"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"carts",
+						":cid"
+					],
+					"variable": [
+						{
+							"key": "cid",
+							"value": "c2wi3e57xvj"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add product to cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.28:3000/api/carts/:cid/product/:pid",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"28"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"carts",
+						":cid",
+						"product",
+						":pid"
+					],
+					"variable": [
+						{
+							"key": "cid",
+							"value": "zto4azfovaa"
+						},
+						{
+							"key": "pid",
+							"value": "exbmes85ylq"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
