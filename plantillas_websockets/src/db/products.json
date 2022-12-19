@@ -1,0 +1,80 @@
+[
+  {
+    "title": "Silla para escritorio",
+    "description": "Es muy comoda. Tiene 4 ruedas.",
+    "price": 40000,
+    "code": "000AS1",
+    "id": "mjoyf96i2x"
+  },
+  {
+    "title": "Birome trazo fino",
+    "description": "Color azul",
+    "price": 200,
+    "code": "000AS2",
+    "stock": 0,
+    "id": "exbmes85ylq"
+  },
+  {
+    "title": "Pelota de futsal",
+    "description": "La misma del mundial",
+    "price": 21000,
+    "code": "000AS3",
+    "id": "63tbhgcyznt"
+  },
+  {
+    "title": "Camiseta de la selección",
+    "description": "La que uso Messi vs Mexico",
+    "price": 230000,
+    "code": "000AS4",
+    "id": "8osoirbt3r"
+  },
+  {
+    "title": "Zapatillas deportivas",
+    "description": "Color negro",
+    "price": 150000,
+    "code": "000AS5",
+    "id": "15y35092af2"
+  },
+  {
+    "title": "Tintura de pelo",
+    "description": "Barato barato",
+    "price": 150000,
+    "code": "000AS6",
+    "id": "cyu99ygpz2t"
+  },
+  {
+    "title": "Celular Nokia",
+    "description": "La rompe",
+    "price": 30000,
+    "code": "000AS7",
+    "id": "wouqsd0caaq"
+  },
+  {
+    "title": "Microfono inalambrico",
+    "description": "3 horas de duracion",
+    "price": 10000,
+    "code": "000AS8",
+    "id": "eajmw0zojxq"
+  },
+  {
+    "title": "Paquete de figuritas del mundial",
+    "description": "Ninguna repetida",
+    "price": 100,
+    "code": "000AS9",
+    "id": "vpk34rug9v"
+  },
+  {
+    "title": "Auto Gol Trend",
+    "description": "Blanco",
+    "price": 1000000,
+    "code": "000AD9",
+    "id": "wme4bimauj"
+  },
+  {
+    "title": "nuevo producto",
+    "price": 14000,
+    "description": "3 horas de duracion",
+    "code": "AACC11",
+    "id": "vmfylyj7bu"
+  }
+]
