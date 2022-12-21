@@ -18,12 +18,18 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 app.use('/', viewRouter);
 
-socketServer.on('connection', socket => {
-	//console.log("Socket escuchando...");
-	//socket.on('message', data => console.log("Mensage from client: ", data));
-	//socket.emit('para_uno', 'este mensaje es para uno');
-	socket.on('nuevo_producto', producto => {
-		productsManager.saveProduct(producto);
+socketServer.on('connection', async(socket) => {
+	
+	socket.on('add_product',async(product) => {
+		await productsManager.saveProduct(product);
+		const products = await productsManager.getProducts();
+		socketServer.sockets.emit('update_products', products);
 	});
+
+	socket.on('delete_product', async(productId) => {
+		await productsManager.deleteProduct(productId);
+		const products = await productsManager.getProducts();
+		socketServer.sockets.emit('update_products', products);
+	})
 
 });

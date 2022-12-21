@@ -1,27 +1,5 @@
 [
   {
-    "title": "Silla para escritorio",
-    "description": "Es muy comoda. Tiene 4 ruedas.",
-    "price": 40000,
-    "code": "000AS1",
-    "id": "mjoyf96i2x"
-  },
-  {
-    "title": "Birome trazo fino",
-    "description": "Color azul",
-    "price": 200,
-    "code": "000AS2",
-    "stock": 0,
-    "id": "exbmes85ylq"
-  },
-  {
-    "title": "Pelota de futsal",
-    "description": "La misma del mundial",
-    "price": 21000,
-    "code": "000AS3",
-    "id": "63tbhgcyznt"
-  },
-  {
     "title": "Camiseta de la selección",
     "description": "La que uso Messi vs Mexico",
     "price": 230000,
@@ -34,20 +12,6 @@
     "price": 150000,
     "code": "000AS5",
     "id": "15y35092af2"
-  },
-  {
-    "title": "Tintura de pelo",
-    "description": "Barato barato",
-    "price": 150000,
-    "code": "000AS6",
-    "id": "cyu99ygpz2t"
-  },
-  {
-    "title": "Celular Nokia",
-    "description": "La rompe",
-    "price": 30000,
-    "code": "000AS7",
-    "id": "wouqsd0caaq"
   },
   {
     "title": "Microfono inalambrico",
@@ -76,5 +40,26 @@
     "description": "3 horas de duracion",
     "code": "AACC11",
     "id": "vmfylyj7bu"
+  },
+  {
+    "title": "Pelota",
+    "description": "Pinter",
+    "price": "5000",
+    "code": "a012",
+    "id": "eatny6ooyst"
+  },
+  {
+    "title": "Mesa",
+    "description": "De madera",
+    "price": "50000",
+    "code": "0099AB",
+    "id": "7mpoa0a6cxd"
+  },
+  {
+    "title": "Camisa",
+    "description": "Hombre - Azul - XL",
+    "price": "35000",
+    "code": "400",
+    "id": "c8wpt6gp07j"
   }
 ]
