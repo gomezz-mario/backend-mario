@@ -1,0 +1,71 @@
+<div>
+	<h1>Realtime Products</h1>
+		<div class="container">
+			<div class="container-fluid mt-2 mb-2 p-0">
+				<h4 class="text-title">Registrar gasto</h3>
+			</div>
+			<div class="row g-2 mb-3">
+				<!-- Nombre -->
+				<div class="col-12 col-sm-6 col-md-auto">
+					<input type="text" class="form-control" id="campo-nombre" placeholder="Nombre">
+				</div>
+
+				<!-- Detalle (opcional) -->
+				<div class="col">
+					<input type="text" class="form-control" id="campo-descripcion" placeholder="Breve descripción">
+				</div>
+				<!-- Detalle (opcional) -->
+				<div class="col-12 col-sm-4 col-md-auto">
+					<input type="text" class="form-control" id="campo-codigo" placeholder="Código">
+				</div>
+				<!-- Monto -->
+				<div class="col-12 col-sm-6 col-md-auto">
+					<div class="input-group">
+						<span class="input-group-text">$</span>
+						<input type="number" class="form-control" id="campo-precio" placeholder="Monto">
+					</div>
+				</div>
+				<!-- Registrar -->
+				<div class="col-sm-12 col-md-auto">
+					<button type="button" class="btn btn-dark" id="btn-registrar-producto">Registrar</button>
+				</div>
+			</div>
+		
+
+			<div class="container-fluid mt-2 mb-2 p-0">
+				<h4 class="text-title">Productos registrados</h3>
+			</div>
+
+			<table class="table mb-3" id="tabla-products">
+				<thead>
+					<tr>
+						<th scope="col" style="width: 20%;">Nombre</th>
+						<th scope="col" style="width: 50%;">Descripción</th>
+						<th scope="col" style="width: 20%;" class="text-end">Precio</th>
+						<th scope="col" style="width: 10%;"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#if products.length}}
+						{{#each products}}
+							<tr id="{{this.id}}">
+								<td scope="col" style="width: 20%;">{{this.title}}</td>
+								<td scope="col" style="width: 50%;">{{this.description}}</td>
+								<td scope="col" style="width: 20%;" class="text-end">${{this.price}}</td>
+								<td scope="col" style="width: 10%;">
+									<button type="button" class="btn btn-outline-dark me-2" onclick="deleteProduct('{{this.id}}')">
+										<i class='bi bi-trash3-fill'></i>
+									</button>
+								</td>
+							</tr>
+						{{/each}}
+					{{/if}}
+				</tbody>
+				<tfoot></tfoot>
+			</table>
+		</div>
+		
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
