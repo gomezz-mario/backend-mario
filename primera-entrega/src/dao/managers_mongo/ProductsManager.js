@@ -2,7 +2,7 @@ import productModel from '../models/Product.js';
 
 class ProductsManager{
 	constructor(){};
-	getTeams = async() => {
+	getProducts = async() => {
 		const products = await productModel.find();
 		console.log(products);
 	}
