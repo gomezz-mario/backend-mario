@@ -7,7 +7,7 @@ class ProductManager{
 	};
 
 	getProductById = async(id) => {
-		return await productModel.findById(id)
+		return await productModel.findById(id).lean();
 	};
 
 	createNewProduct = async (product) => {

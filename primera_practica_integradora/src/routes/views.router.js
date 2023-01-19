@@ -3,7 +3,7 @@ import productsManager from "../dao/managers_mongo/ProductManager.js";
 
 const viewRouter = Router();
 
-const product = {
+const producttt = {
 	name: "Mesa",
 	price: 2000,
 	description: "soy la descripcion del producto",
@@ -17,10 +17,10 @@ const product = {
 }
 
 const cart = [
-	{...product, quantity: 1},
-	{...product, quantity: 2},
-	{...product, quantity: 3},
-	{...product, quantity: 2},
+	{...producttt, quantity: 1},
+	{...producttt, quantity: 2},
+	{...producttt, quantity: 3},
+	{...producttt, quantity: 2},
 ]
 
 /*
@@ -39,8 +39,14 @@ viewRouter.get('/', async(request, response) => {
 	response.render('products',{products});
 });
 
-viewRouter.get('/product', async(request, response) => {
-	response.render('oneproduct', {product});
+viewRouter.get('/:id', async(request, response) => {
+	try {
+		const id = request.params.id;
+		const product = await productsManager.getProductById(id);
+		response.render('oneproduct', {product});
+	} catch (error) {
+		console.log("Ha ocurrido un error: ", error);
+	}
 });
 
 viewRouter.get('/cart', async(request, response) => {
