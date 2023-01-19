@@ -1,0 +1,30 @@
+<div class="container-fluid mt-5">
+	<div class="container">
+		{{#if cart.length}}
+			{{#each cart}}
+				<div class="container-fluid mb-2 bg-dark text-light p-1 rounded row">
+					<div class="col-auto p-0">
+						<img src={{this.img}} class="img-thumbnail" height="90" width="90">
+					</div>
+					<div class="col d-flex flex-column align-items-start">
+						<span style="font-size: 18px; font-weight: bolder;">{{this.name}}</span>
+						<p class="text-truncate" style="font-size: 14px; font-weight: lighter;">{{this.description}}</p>
+						<p class="justify-self-end mb-0" style="font-size: 12px;">
+							<span>Cantidad: </span>
+							<span style="font-weight: bold;">{{this.quantity}}</span>
+							<span> || </span>
+							<span>Precio unitario: </span>
+							<span style="font-weight: bold;">${{this.price}}</span>	
+						</p>
+					</div>
+					<div class="col d-flex flex-column align-items-end justify-content-end">
+						<p class="mb-0" style="font-size: 12px;">
+							<span>Subtotal: </span>
+							<span style="font-weight: bold; font-size: 14px">$100</span>
+						</p>
+					</div>
+				</div>
+			{{/each}}
+		{{/if}}
+	</div>
+</div>
