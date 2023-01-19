@@ -3,10 +3,12 @@ import productModel from '../models/product.model.js';
 class ProductManager{
 
 	getProducts = async () => {
-		return await productModel.find();
+		return await productModel.find().lean();
 	};
 
-	getProductById = () => {};
+	getProductById = async(id) => {
+		return await productModel.findById(id)
+	};
 
 	createNewProduct = async (product) => {
 		return await productModel.create({...product});
@@ -14,7 +16,9 @@ class ProductManager{
 
 	updateProduct = () => {};
 
-	deleteProduct = () => {};
+	deleteProduct = (id) => {
+		
+	};
 
 }
 

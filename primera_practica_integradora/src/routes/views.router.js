@@ -1,4 +1,5 @@
 import { Router } from "express";
+import productsManager from "../dao/managers_mongo/ProductManager.js";
 
 const viewRouter = Router();
 
@@ -22,15 +23,19 @@ const cart = [
 	{...product, quantity: 2},
 ]
 
-
+/*
 const products = [
 	product,
 	product,
 	product,
 	product,
-]
+]*/
 
 viewRouter.get('/', async(request, response) => {
+	const products = await productsManager.getProducts();
+	//console.log("Products: ", products);
+
+	//console.log({products});
 	response.render('products',{products});
 });
 
