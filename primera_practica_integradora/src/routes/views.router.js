@@ -1,35 +1,8 @@
 import { Router } from "express";
 import productsManager from "../dao/managers_mongo/ProductManager.js";
+import cartManager from "../dao/managers_mongo/CartsManager.js";
 
 const viewRouter = Router();
-
-const producttt = {
-	name: "Mesa",
-	price: 2000,
-	description: "soy la descripcion del producto",
-	img: "https://cbff-teco-strapi-cms-pro.s3.amazonaws.com/Galaxy_S21_Fe_Gris_Frente_min_2d6f1d0629.png",
-	thumbnails: [
-		"https://cbff-teco-strapi-cms-pro.s3.amazonaws.com/Galaxy_S21_Fe_Gris_Frente_min_2d6f1d0629.png",
-		"https://cbff-teco-strapi-cms-pro.s3.amazonaws.com/Galaxy_S21_Fe_Gris_Frente_min_2d6f1d0629.png",
-		"https://cbff-teco-strapi-cms-pro.s3.amazonaws.com/Galaxy_S21_Fe_Gris_Frente_min_2d6f1d0629.png",
-		"https://cbff-teco-strapi-cms-pro.s3.amazonaws.com/Galaxy_S21_Fe_Gris_Frente_min_2d6f1d0629.png",
-	]
-}
-
-const cart = [
-	{...producttt, quantity: 1},
-	{...producttt, quantity: 2},
-	{...producttt, quantity: 3},
-	{...producttt, quantity: 2},
-]
-
-/*
-const products = [
-	product,
-	product,
-	product,
-	product,
-]*/
 
 viewRouter.get('/', async(request, response) => {
 	const products = await productsManager.getProducts();
@@ -49,8 +22,20 @@ viewRouter.get('/:id', async(request, response) => {
 	}
 });
 
-viewRouter.get('/cart', async(request, response) => {
-	response.render('mycart', {cart});
+viewRouter.get('/cart/:cid', async(request, response) => {
+	try {
+		const cid = request.params.cid;
+		const cart = await cartManager.getCartById(cid);
+		const products = cart.products;
+		const mycart = [];
+		for(let product of products){
+			let detailsProduct = await productsManager.getProductById(product.id);
+			mycart.push({...detailsProduct, quantity: product.quantity});
+		}	
+		response.render('mycart', {cart: mycart});
+	} catch (error) {
+		console.log("Ha ocurrido un error: ", error);
+	}
 });
 
 export default viewRouter;
