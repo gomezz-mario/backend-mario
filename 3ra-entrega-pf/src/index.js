@@ -2,7 +2,7 @@ import { port } from './config/config.js';
 import express from 'express';
 import session from 'express-session';
 import userRouter from './routers/user.routes.js';
-import productRouter from './routers/product.routes.js';
+import { productRouter } from './routers/index.routes.js';
 import cartRouter from './routers/cart.routes.js';
 import passport from 'passport';
 import initializePassport from './passport/passport.config.js';
@@ -21,7 +21,7 @@ app.use(session({
 			useNewUrlParser: true,
 			useUnifiedTopology: true	
 		},
-		ttl: 30
+		ttl: 3000
 	}),
 	secret: '123456',
 	resave: true,
@@ -33,7 +33,9 @@ app.use(passport.initialize());
 initializePassport();
 
 app.use('/api/user', userRouter);
-app.use('/api/product', productRouter);
+app.use('/api/product', productRouter.getRouter());
+
 app.use('/api/cart', cartRouter);
 app.listen(port);
 console.log('server listen on port ', port);
+

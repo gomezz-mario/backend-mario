@@ -14,4 +14,7 @@ export default class ProductRepository{
 	getProducts = async (limit, page, sort, filters) => {
 		return await this.productDao.getProducts(limit, page, sort, filters);
 	}
+	deleteProductById = async (id) => {
+		return await this.productDao.deleteProductById(id);
+	}
 }

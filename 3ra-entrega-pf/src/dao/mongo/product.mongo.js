@@ -6,7 +6,11 @@ class Product{
 		Connect.getInstance();
 	};
 	getProductById = async (id) => {
-		return await ProductModel.findById(id);
+		try {
+			return await ProductModel.findById(id);
+		} catch (error) {
+			return null;
+		}
 	};
 	addProduct = async (productData) => {
 		return await ProductModel.create(productData);	
@@ -41,24 +45,26 @@ class Product{
 		const result = await ProductModel.paginate(filter, options);
 		
 		const doc = {
-			payload: result.docs,  
-			totalPages: result.totalPages, 
-			prevPage: result.prevPage, 
-			nextPage: result.nextPage, 
-			page: result.page, 
-			hasPrevPage: result.hasPrevPage, 
-			hasNextPage: result.hasNextPage, 
+			products: result.docs,
+			pagination: {
+				totalPages: result.totalPages, 
+				prevPage: result.prevPage, 
+				nextPage: result.nextPage, 
+				page: result.page, 
+				hasPrevPage: result.hasPrevPage, 
+				hasNextPage: result.hasNextPage, 
+			}  
 		};
-		
-		console.log(doc)
 
-		if(doc.page > doc.totalPages) return {status: 'error', messageError: 'Error de paginación'};
-		return {
-			status: 'succsess',
-			...doc,
-			prevLink: doc.hasPrevPage ? `/api/product/?page=${prevPage}&limit=${options.limit}` : null,
-			nextLink: doc.hasNextPage ? `/api/product/?page=${nextPage}&limit=${options.limit}` : null,
-		}
+		if(doc.pagination.page > doc.pagination.totalPages) return null;
+		
+		doc.pagination.prevLink = doc.hasPrevPage ? `/api/product/?page=${prevPage}&limit=${options.limit}` : null;
+		doc.pagination.nextLink = doc.hasNextPage ? `/api/product/?page=${nextPage}&limit=${options.limit}` : null;
+
+		return doc;
+	}
+	deleteProductById = async(id) => {
+		return await ProductModel.findByIdAndDelete(id);
 	}
 }
 

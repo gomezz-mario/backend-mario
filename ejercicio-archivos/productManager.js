@@ -25,22 +25,28 @@ class ProductManager{
 		})
 		.catch(error => console.log(error));
 	}
-	getProducts(){
-		fs.promises.readFile(this.path, 'utf-8')
-		.then(contenido => JSON.parse(contenido))
-		.catch(error => console.log(error));
+	getProducts = async() => {
+		if(fs.existsSync(this.path)){
+			let data = await fs.promises.readFile(this.path, 'utf-8');
+			let products = JSON.parse(data);
+			return products;
+		} else{
+			return[];
+		}
 	}
-	getProductById(id){
-		fs.promises.readFile(this.path, 'utf-8')
-		.then(contenido => {
-			let productos = JSON.parse(contenido);
-			//return productos.find(prod => prod.id === id);
-			let producto = productos.find(prod => prod.id === id);
-			console.log(producto);
-			return producto;
-		})
-		.catch(error => console.log(error));
+
+	getProductById = async(id) => {
+		if(fs.existsSync(this.path)){
+			let data = await fs.promises.readFile(this.path, 'utf-8');
+			let product = parse(data).find(prod => prod.id === id);
+			if(!product)
+				product = {};
+			return product; 
+		} else{
+			return {};
+		}
 	}
+
 	updateProduct(id, data){
 		fs.promises.readFile(this.path, 'utf-8')
 		.then(contenido => {
