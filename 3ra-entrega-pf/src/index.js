@@ -1,9 +1,7 @@
 import { port } from './config/config.js';
 import express from 'express';
 import session from 'express-session';
-import userRouter from './routers/user.routes.js';
-import { productRouter } from './routers/index.routes.js';
-import cartRouter from './routers/cart.routes.js';
+import { productRouter, cartRouter, userRouter } from './routers/index.routes.js';
 import passport from 'passport';
 import initializePassport from './passport/passport.config.js';
 import { mongoUrl } from './config/config.js';
@@ -27,15 +25,11 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
-
-
 app.use(passport.initialize());
 initializePassport();
-
-app.use('/api/user', userRouter);
+app.use('/api/user', userRouter.getRouter());
 app.use('/api/product', productRouter.getRouter());
-
-app.use('/api/cart', cartRouter);
+app.use('/api/cart', cartRouter.getRouter());
 app.listen(port);
 console.log('server listen on port ', port);
 
