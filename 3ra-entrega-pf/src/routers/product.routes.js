@@ -1,6 +1,11 @@
 import { ProductService } from "../repositories/index.js";
 import CustomRouter from "./custom.router.js";
 
+import CustomError from "../services/errors/custom.error.js";
+import EErrors from "../services/errors/errors.enums.js";
+import { generateProductErrorInfo } from "../services/errors/errors.info.js";
+
+
 export default class ProductRouter extends CustomRouter{
 	init(){
 		this.get('/', ["PUBLIC"], async (req, res) => {
@@ -21,6 +26,16 @@ export default class ProductRouter extends CustomRouter{
 		});
 		this.post('/', ["ADMIN"], async (req, res) => {
 			const { productData } = req.body;
+
+			if(!productData.name || !productData.price || !productData.code){
+				CustomError.createError({
+					name: "Product create error",
+					cause: generateProductErrorInfo({name: productData.name, price: productData.price, code: productData.code}),
+					message: "Error trying to create user",
+					code: EErrors.INVALID_TYPES_ERROR
+				})
+			}
+			
 			await ProductService.addProduct(productData);
 			res.sendSuccess("Producto creado");
 		});
